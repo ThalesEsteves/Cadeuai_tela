@@ -1,0 +1,97 @@
+<ion-menu contentId="my-content" class="Aba-menu">
+  <div class="menu">
+
+    <div class="botao">
+      <ion-item lines="none" routerLink="/configu" class="fundo">
+        <ion-icon name="settings"  slot="start" class="icon"></ion-icon>
+        <ion-label class="text">Configurações</ion-label>
+      </ion-item>
+    </div>
+    
+   
+
+    <ion-item lines="none" routerLink="/suporte" class="fundo">
+      <ion-icon name="chatbubbles" slot="start" class="icon"></ion-icon>
+      <ion-label class="text">Suporte</ion-label>
+    </ion-item>
+
+    <ion-item lines="none" routerLink="/entradas-map" class="fundo">
+      <ion-icon name="map" slot="start" class="icon"></ion-icon>
+      <ion-label class="text">Mapas Salvos</ion-label>
+    </ion-item>
+
+    <!-- <ion-item lines="none" routerLink="/database" >
+      <ion-icon name="skull" slot="start" class="icon"></ion-icon>
+      <ion-label class="text">Firebase + Storage</ion-label>
+    </ion-item> -->
+  </div>
+
+</ion-menu>
+
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<!----------------------------------------------- content -------------------------------------------------->
+<ion-content id="my-content" class="content">
+
+    <!-- Adicionando um componente de pesquisa com placeholder -->
+
+    <ion-searchbar (ionChange)="pesquisar_lojas($event)" (click)="list_is_open = true" show-clear-button="always"  placeholder="Procurar loja"></ion-searchbar>  
+
+    <ion-slides *ngIf="!list_is_open" [options]="sliderOpt" zoom id="img_map">
+      <ion-slide>
+        <div class="swiper-zoom-container">
+           <img src="{{image_path}}">
+        </div>
+      </ion-slide>
+    </ion-slides>
+
+    <div *ngIf="list_is_open"  class="setor_buttons">
+
+      <ion-item *ngFor="let listamapas of listamapas" (click)="routeSelect(listamapas.rotaloja)" lines="full">
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+        </ion-thumbnail>
+        <ion-label>{{listamapas.nomeloja}}</ion-label>
+      </ion-item>
+
+    </div>
+
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    
+    <div class="footer">
+
+
+      <ion-button (click)="checar_lista()" slot="start" fill="clear" size="large">
+        <ion-icon name="navigate-circle"></ion-icon>
+      </ion-button>
+
+      <ion-fab-button (click)="startScanner()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+
+      <ion-button slot="end" fill="clear" size="large" id="news-modal">
+        <ion-icon name="newspaper"></ion-icon>
+      </ion-button>
+    </div>
+
+  </ion-toolbar>
+</ion-footer>
+
+<ion-modal #modal trigger="news-modal" [initialBreakpoint]="0.50" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+  <ng-template>
+   news
+  </ng-template>
+</ion-modal>

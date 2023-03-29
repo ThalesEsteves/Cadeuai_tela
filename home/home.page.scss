@@ -1,0 +1,45 @@
+.menu {
+  padding-top: 2rem;
+  height: 100%;
+  background: #1d3446;
+  
+}
+.fundo{
+  --background:#122736;
+  padding: 0.3em;
+  margin: 0.2em ;
+  border-radius: 1.3em;
+  
+}
+.icon{
+  color: #ff8e80;
+}
+.text{
+  font-size: 1.2em;
+  color: rgb(255, 255, 255);
+}
+.Aba-menu{
+  border-radius:1em ;
+  
+ 
+  width: 82%;
+}
+.content{
+  overflow: hidden
+  
+}
+
+.footer {
+  display: flex; 
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+#img_map{
+  height: 30rem;
+}
+.setor_buttons{
+  display: flex;
+  flex-direction: column;
+  
+}
